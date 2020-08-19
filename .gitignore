@@ -4,4 +4,6 @@ slprj/
 *.r201*
 *.autosave
 *.asv
+unGit/
+*.fig
 ~$*
