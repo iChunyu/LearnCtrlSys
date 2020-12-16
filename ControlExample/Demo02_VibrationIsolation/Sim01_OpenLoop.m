@@ -52,7 +52,8 @@ T = 1;                          % total simulation time
 % ainFlag: input flag for acceleration
 %   0 --- none
 %   1 --- step from 0 to 1e-6 at beginning
-%   2 --- < reserved >
+%   2 --- sine wave of 0.1 Hz with 1e-6 amplitude
+%   3 --- white noise with 1e-6 PSD
 ainFlag = 1;            
 
 % ctrlFlag: controller selection
