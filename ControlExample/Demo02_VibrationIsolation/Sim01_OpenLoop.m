@@ -22,7 +22,7 @@ bodeopts.TickLabel.FontSize = 18;
 bodeopts.Title.String = [];
 
 %% Plant
-%               omega^2
+%                  s
 % P(s) = ----------------------
 %         s^2 + xi*s + omega^2
 % Dynamic: 2nd order stiffness-damping-mass system
@@ -30,7 +30,7 @@ omega = 10*2*pi;
 omg2 = omega^2;
 xi = 2*omega*0.3;
 v0 = 0;  x0 = 0;    % initial condition
-P = tf(omg2,[1 xi omg2]);
+P = tf([1 0],[1 xi omg2]);
 
 % Normalized velocity sensor
 Zs = [0 0];

@@ -30,8 +30,8 @@ Hs = Hs0/sigma(Hs0,1*2*pi);
 
 
 % PID
-Kp = 200;
-Ki = 135;
+Kp = 500;
+Ki = 130;
 Kd = 0;
 N = 100;
 
