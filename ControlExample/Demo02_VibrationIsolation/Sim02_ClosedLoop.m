@@ -26,12 +26,17 @@ Hs = Hs0/sigma(Hs0,1*2*pi);
 
 %% Controller
 % Phase compensator
-
-
+s = tf('s');
+K = 10^2.9;
+omg1 = 10^(1.333)*2*pi;
+omg2 = 10^(1.872)*2*pi;
+omg3 = 10^(-0.482)*2*pi;
+omg4 = 10^(0.99)*2*pi;
+Hpc= K*((s+omg1)/(s+omg2))*((s+omg4)/(s+omg3))^3;
 
 % PID
-Kp = 500;
-Ki = 130;
+Kp = 150;
+Ki = 200;
 Kd = 0;
 N = 100;
 
@@ -54,7 +59,7 @@ ainFlag = 2;
 %   2 --- PID
 %   3 --- ADRC
 ctrlType = ["Open Loop","Phase Compensator","PID","ADRC"];
-for ctrlFlag = [0 2]
+for ctrlFlag = 0:2
     sim('VibrationIsolation')
     
     figure(100)
@@ -79,4 +84,19 @@ for ctrlFlag = [0 2]
     legend
     xlabel('Time (s)')
     ylabel('a (m/s^2)')
+end
+
+T = 1e3;
+ainFlag = 3;
+for ctrlFlag = 0:2
+    sim('VibrationIsolation')
+    
+    figure(400)
+    [pxx,f] = periodogram(a,hann(length(a)),length(a),1/Ts,'onesided');
+    loglog(f,sqrt(pxx),'DisplayName',ctrlType(ctrlFlag+1))
+    hold on
+    grid on
+    legend
+    xlabel('Frequency (Hz)')
+    ylabel('Acc (m/s^2/Hz^{1/2})')
 end
