@@ -60,7 +60,7 @@ ainFlag = 1;
 %   0 --- open loop
 %   1 --- phase compensator
 %   2 --- PID
-%   3 --- ADRC
+%   3 --- LADRC: Ref.(DOI)10.1364/AO.390168
 ctrlFlag = 0;
 
 sim('VibrationIsolation')

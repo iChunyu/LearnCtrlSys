@@ -1,6 +1,6 @@
 % Finish controller design and test the closed loop
 
-% XiaoCY 2020-12-16
+% XiaoCY 2020-12-20
 
 %%
 clear;clc
@@ -40,7 +40,10 @@ Ki = 200;
 Kd = 0;
 N = 100;
 
-% ADRC
+% LADRC
+beta1 = 800;
+beta2 = 3.5e4;
+k1 = 900;
 
 %% Simulation
 Ts = 1e-3;                      % sample time
@@ -57,9 +60,9 @@ ainFlag = 2;
 %   0 --- open loop
 %   1 --- phase compensator
 %   2 --- PID
-%   3 --- ADRC
-ctrlType = ["Open Loop","Phase Compensator","PID","ADRC"];
-for ctrlFlag = 0:2
+%   3 --- LADRC: Ref.(DOI)10.1364/AO.390168
+ctrlType = ["Open Loop","Phase Compensator","PID","LADRC"];
+for ctrlFlag = 0:3
     sim('VibrationIsolation')
     
     figure(100)
@@ -86,9 +89,9 @@ for ctrlFlag = 0:2
     ylabel('a (m/s^2)')
 end
 
-T = 1e3;
+T = 3e3;
 ainFlag = 3;
-for ctrlFlag = 0:2
+for ctrlFlag = 0:3
     sim('VibrationIsolation')
     
     figure(400)
