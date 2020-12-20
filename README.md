@@ -2,7 +2,7 @@
 
 本仓库用于记录控制理论学习过程中的实践操作，仓库内容更新如下：
 
-- ControlExample：该文件夹给出基于传递函数的经典控制中PID控制器参数调节的示例，以典型的负刚度弹簧为例（暂停更新）；
+- ControlExample：给出各种控制示例，不定时更新；
 - Reference：分析学习过程中获得的比较好的资料；
 - ModernControl：尝试基于状态空间的现代控制；
 - BangBangControl：砰砰控制
