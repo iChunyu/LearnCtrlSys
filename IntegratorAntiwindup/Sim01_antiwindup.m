@@ -1,19 +1,19 @@
-% Compare integrators with/without antiwindup loop
+% Compare PI controllers with/without antiwindup loop
 
 % Ref: Feedback Control of Dynamic Systems, p655.
-% XiaoCY 2021-06-18
+% XiaoCY 2021-06-19
 
 %% 
 clear;clc
 
-T = 5;
+T = 4;
 Ts = 1e-3;
 
 stepAmp = [1, -1];
-stepTime = 3;
+stepTime = 2;
 
-intLim = 2;
-Ka =[10 50 250];
+intLim = 1;
+Ka = [10 50 250];
 
 %%
 sim('mdl01_antiwindup')
