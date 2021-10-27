@@ -81,7 +81,7 @@ $$
         A^{N-1}B & A^{N-2}B & A^{N-3}B & \cdots & B
     \end{bmatrix}}_{C}
     \underbrace{\begin{bmatrix}
-        u(k|k) \\  u(k+1|k)  \\ \vdots \\ u(k+N|k)
+        u(k|k) \\  u(k+1|k)  \\ \vdots \\ u(k+N-1|k)
     \end{bmatrix}}_{\mathbf{U}(k)}
 $$
 
@@ -103,7 +103,7 @@ $$
     x(k|k) \\  x(k+1|k)  \\ \vdots \\ x(k+N|k)
 \end{bmatrix}
 + \begin{bmatrix}
-        u(k|k) \\  u(k+1|k)  \\ \vdots \\ u(k+N|k)
+        u(k|k) \\  u(k+1|k)  \\ \vdots \\ u(k+N-1|k)
     \end{bmatrix}^\mathrm{T}
     \underbrace{\begin{bmatrix}
     R & 0 & 0 & \cdots & 0\\
@@ -113,7 +113,7 @@ $$
     0 & 0 & 0 & \cdots & R
     \end{bmatrix}}_{\bar{R}}
     \begin{bmatrix}
-        u(k|k) \\  u(k+1|k)  \\ \vdots \\ u(k+N|k)
+        u(k|k) \\  u(k+1|k)  \\ \vdots \\ u(k+N-1|k)
     \end{bmatrix} \\
     &= \mathbf{X}^\mathbf{T}(k) \bar{Q} \mathbf{X}(k) + \mathbf{U}^\mathrm{T}(k)\bar{R}\mathbf{U}(k) \\
     &= \left(Mx(k) + C\mathbf{U}(k)\right)^\mathrm{T} \bar{Q} \left(Mx(k) + C\mathbf{U}(k)\right) + \mathbf{U}^\mathrm{T}(k)\bar{R}\mathbf{U}(k) \\
