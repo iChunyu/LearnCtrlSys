@@ -3,7 +3,7 @@
 % XiaoCY 2021-10-28
 
 %%
-function varargout = getCmdMPC(A,B,xk,Q,R,F,N)
+function [u,U] = getCmdMPC(xk,A,B,Q,R,F,N)
     n = size(A,1);
     M = eye(n*(N+1),n);
     C = zeros(n*(N+1),N*size(B,2));
@@ -29,13 +29,7 @@ function varargout = getCmdMPC(A,B,xk,Q,R,F,N)
     H = C'*Qbar*C + Rbar;
     f = C'*Qbar'*M*xk;
 
-    U = quadprog(H,f);
-
-    switch nargout
-        case 1
-            varargout{1} = U(1);
-        case 2
-            varargout{1} = U(1);
-            varargout{2} = U;
-    end
+    opts = optimoptions('quadprog','Display','off');
+    U = quadprog(H,f,[],[],[],[],[],[],[],opts);
+    u = U(1);
 end
