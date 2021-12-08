@@ -32,7 +32,7 @@ Cd = Cc;
 xk = [0.8 0 0];    % Predicted initial state
 
 %%
-sim('KalmanFilterSim2')
+sim('Model02_ParaEstimation.slx')
 
 figure
 plot(t,xm)

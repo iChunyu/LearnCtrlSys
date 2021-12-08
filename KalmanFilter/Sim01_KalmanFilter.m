@@ -3,11 +3,6 @@
 % XiaoCY 2019-10-02
 
 %% Initialization
-set(0,'DefaultLineLineWidth',2)
-set(0,'DefaultAxesFontSize',20)
-set(0,'DefaultFigureWindowStyle','docked')
-set(0,'DefaultFigureColor','w')
-
 clear;clc
 close all
 
@@ -34,7 +29,7 @@ Cd = Cc;
 PredS = [0.8 0];    % Predicted initial state
 
 %%
-sim('KalmanFilterSim')
+sim('Model01_KalmanFilter.slx')
 figure('Name','Result')
 plot(t,xm)
 hold on
