@@ -13,6 +13,9 @@ a = 5;
 x0 = -1;
 v0 = 0;
 
+% target position
+xt = 1;
+
 % target poles
 p1 = -1;
 p2 = -0.5;
@@ -26,12 +29,12 @@ G2 = K1+K2;
 % disp(eig(A))
 
 % simulation configuration
-Ts = 0.01;      % step time
+Ts = 0.001;      % step time
 T1 = 10;        % stop time
 
 % use 3rd bang bang control to generate reference command
 % (smooth referece position)
-umax = 0.1;
+du = 0.1;
 
 %%
 tic
