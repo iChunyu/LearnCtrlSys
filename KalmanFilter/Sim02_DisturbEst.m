@@ -55,5 +55,6 @@ hold on
 grid on
 plot(t,Fin)
 xlabel('Time (s)')
-ylabel('Position (m)')
+ylabel('Force (N)')
 legend('$\hat{F}$','$F_{\rm in}$','interpreter','latex')
+ylim([-2 2])
