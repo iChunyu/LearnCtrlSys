@@ -1,6 +1,8 @@
-% Try to estimate external force using KF
+% Try to estimate external disturbance using KF
+% Treat disturbance as extra states
 
 % XiaoCY 2021-12-06
+% XiaoCY 2022-10-21, using oscillator model for external disturbance
 
 %% Initialization
 clear;clc
@@ -16,23 +18,27 @@ x0 = 1;
 F0 = 1;
 Fn = 1e-3;
 
+% Disturbance
+dmax = 1;       % amplitude
+domg = 1;       % angular velocity [rad/s]
+
 % ????? HOW TO SET Q ?????
-Q = diag([0 0 Fn]);
+Q = diag([0 0 Fn 0]);
 R = 1e-3;
 
 % CT extended state-space
-Ac = [0 1 0; -k 0 1; 0 0 0];
-Bc = [0 1 0]';
-Cc = [1 0 0];
+Ac = [0 1 0 0; -k 0 1 0; 0 0 0 1; 0 0 -domg^2 0];
+Bc = [0 1 0 0]';
+Cc = [1 0 0 0];
 
 % DT state space
-Ad = Ac*Ts+eye(3);
+Ad = Ac*Ts+eye(4);
 Bd = Bc*Ts;
 Cd = Cc;
-xk = [0.8 0 0];    % Predicted initial state
+xk = [0.8 0 0 0];    % Predicted initial state
 
 %%
-sim('Model02_ParaEstimation.slx')
+sim('Model02_DisturbEst.slx')
 
 figure
 plot(t,xm)

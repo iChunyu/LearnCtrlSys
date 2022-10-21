@@ -19,7 +19,7 @@ f = @(x,u) [x(1) + Ts*x(2); -g/L*sin(x(1))*Ts + x(2) + u*Ts];
 
 % DT linearization
 A = @(x) [1 Ts; -g/L*Ts*cos(x(1)) 1];
-B = [0 1]';
+B = [0 Ts]';
 C = [1 0];
 
 R = 1e-2;
